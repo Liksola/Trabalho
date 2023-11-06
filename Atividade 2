@@ -1,0 +1,35 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Escolha o tipo de conversão:");
+        Console.WriteLine("1 - Hexadecimal para Decimal");
+        Console.WriteLine("2 - Hexadecimal para Binário");
+        
+        int choice = int.Parse(Console.ReadLine());
+
+        switch (choice)
+        {
+            case 1:
+                Console.WriteLine("Informe um número hexadecimal:");
+                string hexadecimalInput = Console.ReadLine();
+                int decimalResult = Convert.ToInt32(hexadecimalInput, 16);
+                Console.WriteLine($"Decimal: {decimalResult}");
+                break;
+
+            case 2:
+                Console.WriteLine("Informe um número hexadecimal:");
+                string hexInput = Console.ReadLine();
+                int decResult = Convert.ToInt32(hexInput, 16);
+                string binaryResult = Convert.ToString(decResult, 2);
+                Console.WriteLine($"Binário: {binaryResult}");
+                break;
+
+            default:
+                Console.WriteLine("Escolha inválida. Por favor, escolha 1 ou 2.");
+                break;
+        }
+    }
+}
