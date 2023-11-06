@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static bool IsHexadecimal(string input)
+    {
+        // Definindo o alfabeto hexadecimal para o programa 
+        string hexadecimalAlphabet = "0123456789ABCDEF";
+        
+        // Converta a entrada em maiúsculas para ser case-insensitive
+        input = input.ToUpper();
+        
+        // Verifique se cada caractere da entrada está no alfabeto hexadecimal
+        foreach (char c in input)
+        {
+            if (!hexadecimalAlphabet.Contains(c.ToString()))
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Informe uma cadeia para verificar se é um número hexadecimal:");
+        string input = Console.ReadLine();
+
+        if (IsHexadecimal(input))
+        {
+            Console.WriteLine("É um número hexadecimal válido.");
+        }
+        else
+        {
+            Console.WriteLine("Não é um número hexadecimal válido.");
+        }
+    }
+}
