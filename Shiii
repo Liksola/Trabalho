@@ -1,0 +1,77 @@
+using System;
+
+public class CalculadoraIMC
+{
+    public string Nome { get; set; }
+    public double Peso { get; set; } // em quilogramas
+    public double Altura { get; set; } // em metros
+
+    public CalculadoraIMC(string nome, double peso, double altura)
+    {
+        Nome = nome;
+        Peso = peso;
+        Altura = altura;
+    }
+
+    public double CalcularIMC()
+    {
+        // Fórmula do IMC: peso / (altura * altura)
+        return Peso / (Altura * Altura);
+    }
+
+    public string InterpretarResultadoIMC()
+    {
+        double imc = CalcularIMC();
+        string resultado;
+
+        if (imc < 18.5)
+        {
+            resultado = "Abaixo do peso";
+        }
+        else if (imc < 25)
+        {
+            resultado = "Peso normal";
+        }
+        else if (imc < 30)
+        {
+            resultado = "Sobrepeso";
+        }
+        else if (imc < 35)
+        {
+            resultado = "Obesidade Grau I";
+        }
+        else if (imc < 40)
+        {
+            resultado = "Obesidade Grau II (severa)";
+        }
+        else
+        {
+            resultado = "Obesidade Grau III (mórbida)";
+        }
+
+        return resultado;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Exemplo de uso da classe CalculadoraIMC
+        string nome = "João";
+        double peso = 70; // em kg
+        double altura = 1.75; // em metros
+
+        CalculadoraIMC calculadora = new CalculadoraIMC(nome, peso, altura);
+        double imc = calculadora.CalcularIMC();
+        string resultado = calculadora.InterpretarResultadoIMC();
+
+        Console.WriteLine($"Nome: {nome}");
+        Console.WriteLine($"Peso: {peso} kg");
+        Console.WriteLine($"Altura: {altura} m");
+        Console.WriteLine($"IMC: {imc:F2}");
+        Console.WriteLine($"Resultado: {resultado}");
+
+        Console.ReadLine();
+    }
+}
