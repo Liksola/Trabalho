@@ -1,0 +1,64 @@
+//Calculadora de Glauco
+//Alunos: Horácio e João 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Digite o número referente à operação: \n 1- Soma \n 2- Subtração \n 3- Multiplicação \n 4- Divisão\n");
+        int operador = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Digite o primeiro número:");
+        string input1 = Console.ReadLine();
+        Console.WriteLine("Digite o segundo número:");
+        string input2 = Console.ReadLine();
+
+        
+        if (QuantidadeDigitos(input1) + QuantidadeDigitos(input2) > 3)
+        {
+            Console.WriteLine("A quantidade de dígitos dos números não pode exceder 3");
+            return;
+        }
+
+        double num1 = Convert.ToDouble(input1);
+        double num2 = Convert.ToDouble(input2);
+
+        double resultado = 0;
+
+        switch (operador)
+        {
+            case 1:
+                resultado = num1 + num2;
+                break;
+            case 2:
+                resultado = num1 - num2;
+                break;
+            case 3:
+                resultado = num1 * num2;
+                break;
+            case 4:
+                if (num2 != 0)
+                {
+                    resultado = num1 / num2;
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Divisão por zero!");
+                    return;
+                }
+                break;
+            default:
+                Console.WriteLine("Operador inválido!");
+                return;
+        }
+
+        Console.WriteLine("Resultado: " + resultado);
+    }
+
+ 
+    static int QuantidadeDigitos(string input)
+    {
+        return input.Length;
+    }
+}
