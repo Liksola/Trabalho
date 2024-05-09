@@ -1,0 +1,81 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int contador = 0;
+
+        while (contador < 3)
+        {
+            Console.WriteLine("Digite o operador (+, -, *, /):");
+            char operador = Console.ReadLine()[0]; // lê o primeiro caractere da entrada
+
+            double num1 = 0;
+            double num2 = 0;
+
+            // Primeira entrada
+            Console.WriteLine("Digite o primeiro número (ou pressione Enter para pular):");
+            string entrada1 = Console.ReadLine();
+
+            // Verifica se a entrada1 contém um número
+            if (!string.IsNullOrEmpty(entrada1))
+            {
+                if (entrada1.Length > 1 && entrada1.Length > 3)
+                {
+                    Console.WriteLine("Número total de dígitos excede o limite de 3.");
+                    continue; // Reinicia o loop
+                }
+                num1 = Convert.ToDouble(entrada1);
+            }
+
+            // Segunda entrada
+            Console.WriteLine("Digite o segundo número (ou pressione Enter para pular):");
+            string entrada2 = Console.ReadLine();
+
+            // Verifica se a entrada2 contém um número
+            if (!string.IsNullOrEmpty(entrada2))
+            {
+                if (entrada2.Length > 1 && entrada2.Length > 3)
+                {
+                    Console.WriteLine("Número total de dígitos excede o limite de 3.");
+                    continue; // Reinicia o loop
+                }
+                num2 = Convert.ToDouble(entrada2);
+            }
+
+            double resultado = 0;
+
+            switch (operador)
+            {
+                case '+':
+                    resultado = num1 + num2;
+                    break;
+                case '-':
+                    resultado = num1 - num2;
+                    break;
+                case '*':
+                    resultado = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 != 0)
+                    {
+                        resultado = num1 / num2;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Erro: Divisão por zero!");
+                        continue; // Reinicia o loop
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Operador inválido!");
+                    continue; // Reinicia o loop
+            }
+
+            Console.WriteLine("Resultado: " + resultado);
+
+            contador++;
+        }
+    }
+}
